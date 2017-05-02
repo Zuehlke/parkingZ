@@ -3,13 +3,23 @@ exports.__esModule = true;
 var express = require("express");
 var graphqlHTTP = require("express-graphql");
 var graphql_1 = require("graphql");
-var parkinglots_1 = require("./data/parkinglots");
-var lots = parkinglots_1["default"];
+var buildings_1 = require("./data/buildings");
+var buildings = buildings_1["default"];
 var ParkingLotStatus = new graphql_1.GraphQLEnumType({
     name: 'ParkingloT_Status',
     values: {
-        FREE: { value: 0 },
-        OCUPIED: { value: 1 }
+        UNKNOWN: { value: 0 },
+        FREE: { value: 1 },
+        OCUPIED: { value: 2 }
+    }
+});
+var ParkingLotType = new graphql_1.GraphQLEnumType({
+    name: 'ParkingloT_Type',
+    values: {
+        CAR: { value: 0 },
+        DISABLED: { value: 1 },
+        ELECTRIC: { value: 2 },
+        MOTORCYCLE: { value: 3 }
     }
 });
 var ParkingLot = new graphql_1.GraphQLObjectType({
@@ -18,25 +28,45 @@ var ParkingLot = new graphql_1.GraphQLObjectType({
     fields: function () { return ({
         _id: { type: new graphql_1.GraphQLNonNull(graphql_1.GraphQLString) },
         number: { type: new graphql_1.GraphQLNonNull(graphql_1.GraphQLInt) },
-        status: { type: new graphql_1.GraphQLNonNull(ParkingLotStatus) }
+        status: { type: new graphql_1.GraphQLNonNull(ParkingLotStatus) },
+        type: { type: new graphql_1.GraphQLNonNull(ParkingLotType) }
+    }); }
+});
+var Level = new graphql_1.GraphQLObjectType({
+    name: "Level",
+    description: "This represents a parking level (e.g. level 0, level -1)",
+    fields: function () { return ({
+        _id: { type: new graphql_1.GraphQLNonNull(graphql_1.GraphQLString) },
+        name: { type: new graphql_1.GraphQLNonNull(graphql_1.GraphQLString) },
+        level: { type: new graphql_1.GraphQLNonNull(graphql_1.GraphQLInt) },
+        parkingLots: { type: new graphql_1.GraphQLList(ParkingLot) }
+    }); }
+});
+var Building = new graphql_1.GraphQLObjectType({
+    name: "Building",
+    description: "This represents a building (e.g. Zühlke Eschborn Tiefgarage)",
+    fields: function () { return ({
+        _id: { type: new graphql_1.GraphQLNonNull(graphql_1.GraphQLString) },
+        name: { type: new graphql_1.GraphQLNonNull(graphql_1.GraphQLString) },
+        levels: { type: new graphql_1.GraphQLList(Level) }
     }); }
 });
 var Mutation = new graphql_1.GraphQLObjectType({
-    name: "ParkingLotMutation",
-    description: "Mutations of parkinglots",
+    name: "BuildingMutation",
+    description: "Mutations of buildings",
     fields: function () { return ({
-        createParkingsLot: {
-            type: ParkingLot,
+        createBuilding: {
+            type: Building,
             args: {
-                number: { type: graphql_1.GraphQLInt }
+                name: { type: graphql_1.GraphQLInt }
             },
             resolve: function (source, args) {
-                var parkingLot = {};
-                parkingLot['_id'] = "bla";
-                parkingLot['number'] = args.number;
-                parkingLot['status'] = ParkingLotStatus.FREE;
-                lots.push(parkingLot);
-                return parkingLot;
+                var building = {};
+                building['_id'] = Math.round(Math.random() * 1000000000).toString();
+                building['name'] = args.name;
+                building['levels'] = [];
+                buildings.push(building);
+                return building;
             }
         }
     }); }
@@ -44,10 +74,10 @@ var Mutation = new graphql_1.GraphQLObjectType({
 var Query = new graphql_1.GraphQLObjectType({
     name: 'RootQueries',
     fields: function () { return ({
-        parkinglots: {
-            type: new graphql_1.GraphQLList(ParkingLot),
+        buildings: {
+            type: new graphql_1.GraphQLList(Building),
             resolve: function () {
-                return lots;
+                return buildings;
             }
         }
     }); }
@@ -56,7 +86,7 @@ var Schema = new graphql_1.GraphQLSchema({
     query: Query,
     mutation: Mutation
 });
-var query = "{\n    received: parkinglots {\n        number\n    }\n}";
+var query = "{\n    received: buildings {\n        name\n    }\n}";
 graphql_1.graphql(Schema, query).then(function (result) {
     console.log(result);
 });
