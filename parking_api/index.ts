@@ -1,4 +1,5 @@
 import * as express from 'express';
+import * as cors from 'cors';
 import * as graphqlHTTP from 'express-graphql'
 import {
     // These are the basic GraphQL types
@@ -120,8 +121,9 @@ graphql(Schema, query).then((result) => {
 
 
 var app: express.Application = express();
+app.use(cors());
 app.use('/graphql', graphqlHTTP({
     schema: Schema,
-    graphiql: true
+    graphiql: false
 }));
 app.listen(4001, () => console.log('works'));

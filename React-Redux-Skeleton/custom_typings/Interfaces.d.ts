@@ -7,6 +7,26 @@ interface Expense {
     text: string;
 }
 
+interface Building {
+    _id: string;
+    name: string;
+    levels: Level[];
+}
+
+interface Level {
+    _id: string;
+    name: string;
+    level: number;
+    parkingLots: ParkingLot[];
+}
+
+interface ParkingLot {
+    _id: string;
+    number: number;
+    status: number;
+    type: number;
+}
+
 declare type ExpenseReason =
     "Flight" |
     "Train" |
