@@ -1,26 +1,26 @@
 import {
-    FETCH_EXPENSES, FETCH_EXPENSES_FULFILLED,
+    FETCH_BUILDINGS, FETCH_BUILDINGS_FULFILLED,
 } from "../actions/Actions";
 
-export const expenses = (state: Expense[] = [], action: ActionWithPayload<any>): Expense[] => {
+export const buildings = (state: Building[] = [], action: ActionWithPayload<any>): Building[] => {
     switch (action.type) {
-        case FETCH_EXPENSES:
+        case FETCH_BUILDINGS:
             return [];
 
-        case FETCH_EXPENSES_FULFILLED:
-            return action.payload;
+        case FETCH_BUILDINGS_FULFILLED:
+            return action.payload.data.buildings;
 
         default:
             return state;
     }
 };
 
-export const isFetchingExpenses = (state = false, action: Action): boolean => {
+export const isFetchingBuildings = (state = false, action: Action): boolean => {
     switch (action.type) {
-        case FETCH_EXPENSES:
+        case FETCH_BUILDINGS:
             return true;
 
-        case FETCH_EXPENSES_FULFILLED:
+        case FETCH_BUILDINGS_FULFILLED:
             return false;
 
         default:

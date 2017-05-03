@@ -3,11 +3,26 @@ import { ajax } from 'rxjs/observable/dom/ajax';
 
 export class DataService {
 
-    private baseUrl = "http://localhost:5000";
+    private baseUrl = "http://localhost:4001/graphql";
     private headers = { 'Content-Type': 'application/json' };
 
-    fetchExpenses(): Observable<Expense[]> {
-        return ajax.getJSON<Expense[]>(this.baseUrl + "/api/expenses", this.headers);
+    fetchBuildings(): Observable<Building[]> {
+        let query: string = `{ buildings {
+                                _id
+                                name
+                                levels {
+                                    _id
+                                    name
+                                    level
+                                    parkingLots {
+                                        _id
+                                        number
+                                        status
+                                        type
+                                    }
+                                }
+                            }}`;
+        return ajax.getJSON<Building[]>(this.baseUrl + "?query=" + encodeURIComponent(query));
     }
 
     fetchExpense(id: string): Observable<Expense> {

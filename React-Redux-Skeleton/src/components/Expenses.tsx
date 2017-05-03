@@ -4,57 +4,53 @@ import * as React from 'react';
 import * as redux from 'redux';
 import { connect } from 'react-redux';
 
-import { fetchExpenses } from "../actions/Actions";
+import { fetchBuildings } from "../actions/Actions";
 import { Link } from "react-router";
-import { mapStateToExpenseProps } from "../mappers/StateMapper";
+import { mapStateToBuildingProps } from "../mappers/StateMapper";
 
 type DispatchProps = {
-    fetchExpenses: () => { type: string };
+    fetchBuildings: () => { type: string };
 };
 
 type OwnProps = {
     label: string
 }
 
-type ExpensesProps = Store.ExpenseProps & DispatchProps & OwnProps;
+type ExpensesProps = Store.BuildingProps & DispatchProps & OwnProps;
 
-const mapStateToProps = (state: Store.All, ownProps: OwnProps): Store.ExpenseProps => (mapStateToExpenseProps(state));
+const mapStateToProps = (state: Store.All, ownProps: OwnProps): Store.BuildingProps => (mapStateToBuildingProps(state));
 
 const mapDispatchToProps = (dispatch: redux.Dispatch<Store.All>): DispatchProps => ({
-    fetchExpenses: () =>
-        dispatch(fetchExpenses())
+    fetchBuildings: () =>
+        dispatch(fetchBuildings())
 });
 
 class ExpensesComponent extends React.Component<ExpensesProps, {}> {
 
     componentDidMount() {
-        this.props.fetchExpenses();
+        this.props.fetchBuildings();
     }
 
     render() {
-        const { expenses, isFetchingExpenses, label } = this.props;
+        const { buildings, isFetchingBuildings, label } = this.props;
 
         return (
             <div className="panel panel-primary">
-                <div className="panel-heading">Expenses Overview</div>
-                {expenses && expenses.length &&
+                <div className="panel-heading">Buildings Overview</div>
+                {buildings && buildings.length &&
                     <table className="table">
                         <thead>
                             <tr>
                                 <th>From</th>
-                                <th>Date</th>
-                                <th>Amount</th>
-                                <th>For what</th>
+                                <th>Levels</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            {expenses.map(expense =>
-                                <tr key={expense.id}>
-                                    <td><Link to={`/expenses/${expense.id}`}>{expense.name}</Link></td>
-                                    <td>{expense.date}</td>
-                                    <td>{expense.amount}</td>
-                                    <td>{expense.reason}</td>
+                            {buildings.map(building =>
+                                <tr key={building._id}>
+                                    <td><Link to={`/expenses/${building._id}`}>{building.name}</Link></td>
+                                    <td>{building.levels.length}</td>
                                 </tr>
                             )}
                         </tbody>

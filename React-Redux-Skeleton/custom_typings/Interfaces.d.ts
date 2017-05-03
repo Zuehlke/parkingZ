@@ -38,33 +38,24 @@ declare type ExpenseReason =
 
 declare type FormInputValueType = string | number | Date;
 
-interface ExpenseForm {
+interface BuildingForm {
     name: string;
-    date: Date;
-    text: string;
-    amount: number;
-    reasons: string[];
-    reason: string;
 }
 
-interface ExpenseFormTouched {
+interface BuildingFormTouched {
     name: boolean;
-    date: boolean;
-    text: boolean;
-    amount: boolean;
-    reason: boolean;
 }
 
 declare namespace Store {
 
-    export type ExpenseProps = {
-        expenses: Expense[],
-        isFetchingExpenses: boolean
+    export type BuildingProps = {
+        buildings: Building[],
+        isFetchingBuildings: boolean
     }
 
-    export type ExpenseFormProps = {
-        expenseFormTouched: ExpenseFormTouched
+    export type BuildingFormProps = {
+        buildingFormTouched: BuildingFormTouched
     }
 
-    export type All = ExpenseProps & ExpenseFormProps;
+    export type All = BuildingProps & BuildingFormProps;
 }

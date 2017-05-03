@@ -2,14 +2,14 @@ import { DataService } from './../services/DataService';
 import { Observable } from "rxjs";
 import { ActionsObservable } from "redux-observable";
 import {
-    FETCH_EXPENSES, fetchExpensesFulfilled,
+    FETCH_BUILDINGS, fetchBuildingsFulfilled,
 } from "../actions/Actions";
 
 const dataService = new DataService();
 
 export const fetchExpensesEpic = (action$: ActionsObservable<Action>): Observable<Action> =>
-    action$.ofType(FETCH_EXPENSES)
+    action$.ofType(FETCH_BUILDINGS)
         .mergeMap(action =>
-            dataService.fetchExpenses()
-                .map(fetchExpensesFulfilled)
+            dataService.fetchBuildings()
+                .map(fetchBuildingsFulfilled)
         );

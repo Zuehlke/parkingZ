@@ -1,6 +1,5 @@
-export const mapStateToExpenseProps = (state: Store.All): Store.ExpenseProps => {
+export const mapStateToBuildingProps = (state: Store.All): Store.BuildingProps => {
     return {
-        expenses: state.expenses,
-        isFetchingExpenses: state.isFetchingExpenses
-    }
+        buildings: state.buildings,
+        isFetchingBuildings: state.isFetchingBuildings    }
 };

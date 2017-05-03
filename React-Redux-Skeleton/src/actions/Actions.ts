@@ -1,10 +1,10 @@
-export const FETCH_EXPENSES = 'FETCH_EXPENSES';
-export const FETCH_EXPENSES_FULFILLED = 'FETCH_EXPENSES_FULFILLED';
+export const FETCH_BUILDINGS = 'FETCH_BUILDINGS';
+export const FETCH_BUILDINGS_FULFILLED = 'FETCH_BUILDINGS_FULFILLED';
 
-export const fetchExpenses = () => ({
-    type: FETCH_EXPENSES
+export const fetchBuildings = () => ({
+    type: FETCH_BUILDINGS
 });
 
-export const fetchExpensesFulfilled = (payload: Expense[]) => ({
-    type: FETCH_EXPENSES_FULFILLED, payload
+export const fetchBuildingsFulfilled = (payload: Building[]) => ({
+    type: FETCH_BUILDINGS_FULFILLED, payload
 });

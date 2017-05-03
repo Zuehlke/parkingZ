@@ -6,7 +6,7 @@ export class App extends React.Component<undefined, void> {
 
     render() {
 
-        const pageTitle = 'Welcome to the Expenses Management Tool';
+        const pageTitle = 'Welcome to the Parking Lot Management Tool';
 
         return (
             <div className='container-fluid'>
