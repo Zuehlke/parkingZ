@@ -16,7 +16,7 @@ import {
 
 import Buildings from './data/buildings';
 
-const buildings: any = Buildings;
+const buildings: any[] = Buildings;
 
 var ParkingLotStatus: GraphQLEnumType = new GraphQLEnumType({
     name: 'ParkingloT_Status',
@@ -100,6 +100,18 @@ const Query: GraphQLObjectType = new GraphQLObjectType({
             resolve: () => {
                 return buildings;
             }
+        },
+        building: {
+            type: new GraphQLList(Building),
+            args: {
+                id: {
+                    name: '_id',
+                    type: new GraphQLNonNull(GraphQLString)
+                }
+            },
+            resolve: (root, {id}, source, fieldASTs) => {
+                return buildings.filter(b => b._id === id);
+            }
         }
     })
 });
@@ -124,6 +136,6 @@ var app: express.Application = express();
 app.use(cors());
 app.use('/graphql', graphqlHTTP({
     schema: Schema,
-    graphiql: false
+    graphiql: true
 }));
 app.listen(4001, () => console.log('works'));

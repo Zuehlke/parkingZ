@@ -35,6 +35,11 @@ const Buildings = [
         name: 'Zühlke Eschborn Tiefgarage', 
         levels: Levels
     },
+    {
+        _id: 'ezds38par', 
+        name: 'Zühlke Eschborn Parkhaus', 
+        levels: Levels
+    }
 ];
 
 export default Buildings;
