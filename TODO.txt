@@ -1,0 +1,15 @@
+GraphQl:
+- host node server in azure
+
+React:
+- webpack scss
+- webpack prod
+- Apollo
+- Lvel Component
+- Add Building
+- enhance building list with detail building
+
+PWA:
+- https://reacttestapp-camp2017.azurewebsites.net
+- lighthouse extension
+- offline 200: https://codelabs.developers.google.com/codelabs/offline/#0
