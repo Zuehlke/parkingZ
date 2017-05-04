@@ -16,7 +16,7 @@ export class NavMenu extends React.Component<{}, {}> {
                             <span className='icon-bar'></span>
                             <span className='icon-bar'></span>
                         </button>
-                        <NavLink to="/home" className='navbar-brand'>Parking Lots</NavLink>
+                        <NavLink to="/buildings" className='navbar-brand'>Parking Lots</NavLink>
                     </div>
                     <div className='clearfix'></div>
                     <div className='navbar-collapse collapse'>

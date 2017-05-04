@@ -1,4 +1,4 @@
-require("../../styles/buildings.css");
+require("../../styles/building.css");
 
 import * as React from 'react';
 import * as redux from 'redux';
@@ -43,13 +43,18 @@ class BuildingComponent extends React.Component<BuildingProps, {}> {
                 {building &&
                     <div className="panel-body">
                         <h3>{building.name}</h3>
+                        <div className="legends">
+                            <div className="legend-free">FREE</div>
+                            <div className="legend-ocupied">OCUPIED</div>
+                            <div className="legend-unknown">UNKNOWN</div>
+                        </div>
                         {building.levels.map(level =>
                             // TODO: make Level component
                             <div key={level._id}>
-                                <p>{level.name}</p>
+                                <h4>{level.name}</h4>
                                 {level.parkingLots && level.parkingLots.map(parkingLot =>
                                     <div key={parkingLot._id} className="parking-lot">
-                                        <p>{parkingLot.number}: {parkingLot.status} ({parkingLot.type})</p>       
+                                        <p>{parkingLot.number}: <span className={parkingLot.status.toString().toLowerCase()}>{parkingLot.type}</span></p>       
                                     </div>
                                 )}
                             </div>

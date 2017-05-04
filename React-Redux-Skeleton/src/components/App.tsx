@@ -15,6 +15,7 @@ export class App extends React.Component<undefined, void> {
                         <NavMenu></NavMenu>
                     </div>
                     <div className='col-sm-9 body-content'>
+                        <h3>Parking Lot Management</h3>
                         {this.props.children}
                     </div>
                 </div>
