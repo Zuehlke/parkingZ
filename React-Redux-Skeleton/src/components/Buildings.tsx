@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 import { fetchBuildings } from "../actions/Actions";
 import { Link } from "react-router";
-import { mapStateToBuildingProps } from "../mappers/StateMapper";
+import { mapStateToBuildingsProps } from "../mappers/StateMapper";
 
 type DispatchProps = {
     fetchBuildings: () => { type: string };
@@ -16,9 +16,9 @@ type OwnProps = {
     label: string
 }
 
-type BuildingsProps = Store.BuildingProps & DispatchProps & OwnProps;
+type BuildingsProps = Store.BuildingsProps & DispatchProps & OwnProps;
 
-const mapStateToProps = (state: Store.All, ownProps: OwnProps): Store.BuildingProps => (mapStateToBuildingProps(state));
+const mapStateToProps = (state: Store.All, ownProps: OwnProps): Store.BuildingsProps => (mapStateToBuildingsProps(state));
 
 const mapDispatchToProps = (dispatch: redux.Dispatch<Store.All>): DispatchProps => ({
     fetchBuildings: () =>
@@ -42,15 +42,13 @@ class BuildingsComponent extends React.Component<BuildingsProps, {}> {
                         <thead>
                             <tr>
                                 <th>Garage</th>
-                                <th>Levels</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             {buildings.map(building =>
                                 <tr key={building._id}>
-                                    <td><Link to={`/buildings/${building._id}`}>{building.name}</Link></td>
-                                    <td>{building.levels.length}</td>
+                                    <td><Link to={`/building/${building._id}`}>{building.name}</Link></td>
                                 </tr>
                             )}
                         </tbody>

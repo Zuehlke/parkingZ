@@ -48,14 +48,19 @@ interface BuildingFormTouched {
 
 declare namespace Store {
 
-    export type BuildingProps = {
+    export type BuildingsProps = {
         buildings: Building[],
         isFetchingBuildings: boolean
+    }
+
+    export type BuildingProps = {
+        building: Building,
+        isFetchingBuilding: boolean
     }
 
     export type BuildingFormProps = {
         buildingFormTouched: BuildingFormTouched
     }
 
-    export type All = BuildingProps & BuildingFormProps;
+    export type All = BuildingProps & BuildingsProps & BuildingFormProps;
 }

@@ -91,7 +91,7 @@ const Mutation: GraphQLObjectType = new GraphQLObjectType({
         }
     })
 });
-
+ 
 const Query: GraphQLObjectType = new GraphQLObjectType({
     name: 'RootQueries',
     fields: () => ({

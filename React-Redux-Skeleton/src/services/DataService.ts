@@ -10,23 +10,27 @@ export class DataService {
         let query: string = `{ buildings {
                                 _id
                                 name
+                            }}`;
+        return ajax.getJSON<Building[]>(this.baseUrl + "?query=" + encodeURIComponent(query));
+    }
+
+    fetchBuilding(id: string): Observable<Building> {
+        let query: string = `{ building(id: "${id}") {
+                                _id
+                                name
                                 levels {
                                     _id
                                     name
                                     level
                                     parkingLots {
-                                        _id
-                                        number
-                                        status
+                                        _id,
+                                        number,
+                                        status,
                                         type
                                     }
                                 }
                             }}`;
-        return ajax.getJSON<Building[]>(this.baseUrl + "?query=" + encodeURIComponent(query));
-    }
-
-    fetchExpense(id: string): Observable<Expense> {
-        return ajax.getJSON<Expense>(`${this.baseUrl}/api/expenses/${id}`);
+        return ajax.getJSON<Building>(this.baseUrl + "?query=" + encodeURIComponent(query));
     }
 
     updateExpense(expense: Expense): Observable<{}> {
