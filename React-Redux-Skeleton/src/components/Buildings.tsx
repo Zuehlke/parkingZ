@@ -1,4 +1,4 @@
-require("../../styles/expenses.css");
+require("../../styles/buildings.css");
 
 import * as React from 'react';
 import * as redux from 'redux';
@@ -16,7 +16,7 @@ type OwnProps = {
     label: string
 }
 
-type ExpensesProps = Store.BuildingProps & DispatchProps & OwnProps;
+type BuildingsProps = Store.BuildingProps & DispatchProps & OwnProps;
 
 const mapStateToProps = (state: Store.All, ownProps: OwnProps): Store.BuildingProps => (mapStateToBuildingProps(state));
 
@@ -25,7 +25,7 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<Store.All>): DispatchProps 
         dispatch(fetchBuildings())
 });
 
-class ExpensesComponent extends React.Component<ExpensesProps, {}> {
+class BuildingsComponent extends React.Component<BuildingsProps, {}> {
 
     componentDidMount() {
         this.props.fetchBuildings();
@@ -41,7 +41,7 @@ class ExpensesComponent extends React.Component<ExpensesProps, {}> {
                     <table className="table">
                         <thead>
                             <tr>
-                                <th>From</th>
+                                <th>Garage</th>
                                 <th>Levels</th>
                                 <th></th>
                             </tr>
@@ -49,7 +49,7 @@ class ExpensesComponent extends React.Component<ExpensesProps, {}> {
                         <tbody>
                             {buildings.map(building =>
                                 <tr key={building._id}>
-                                    <td><Link to={`/expenses/${building._id}`}>{building.name}</Link></td>
+                                    <td><Link to={`/buildings/${building._id}`}>{building.name}</Link></td>
                                     <td>{building.levels.length}</td>
                                 </tr>
                             )}
@@ -57,8 +57,8 @@ class ExpensesComponent extends React.Component<ExpensesProps, {}> {
                     </table >
                 }
                 <div className="panel-footer">
-                    <Link className="btn btn-primary" to="/expenses/add">
-                        <span className="glyphicon glyphicon-plus"></span> Add new expense
+                    <Link className="btn btn-primary" to="/buildings/add">
+                        <span className="glyphicon glyphicon-plus"></span> Add new building
                     </Link>
                 </div>
             </div >
@@ -66,4 +66,4 @@ class ExpensesComponent extends React.Component<ExpensesProps, {}> {
     }
 }
 
-export const Expenses: React.ComponentClass<OwnProps> = connect(mapStateToProps, mapDispatchToProps)(ExpensesComponent);
+export const Buildings: React.ComponentClass<OwnProps> = connect(mapStateToProps, mapDispatchToProps)(BuildingsComponent);

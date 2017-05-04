@@ -16,14 +16,14 @@ export class NavMenu extends React.Component<{}, {}> {
                             <span className='icon-bar'></span>
                             <span className='icon-bar'></span>
                         </button>
-                        <NavLink to="/home" className='navbar-brand'>Expense Management</NavLink>
+                        <NavLink to="/home" className='navbar-brand'>Parking Lots</NavLink>
                     </div>
                     <div className='clearfix'></div>
                     <div className='navbar-collapse collapse'>
                         <ul className='nav navbar-nav'>
                             <li>
-                                <NavLink to="/expenses" className='navbar-brand'>
-                                    <span className='glyphicon glyphicon-th-list'></span> Expenses
+                                <NavLink to="/buildings" className='navbar-brand'>
+                                    <span className='glyphicon glyphicon-th-list'></span> Buildings
                                 </NavLink>
                             </li>
                         </ul>

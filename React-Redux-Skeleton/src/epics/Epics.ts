@@ -7,7 +7,7 @@ import {
 
 const dataService = new DataService();
 
-export const fetchExpensesEpic = (action$: ActionsObservable<Action>): Observable<Action> =>
+export const fetchBuildingsEpic = (action$: ActionsObservable<Action>): Observable<Action> =>
     action$.ofType(FETCH_BUILDINGS)
         .mergeMap(action =>
             dataService.fetchBuildings()

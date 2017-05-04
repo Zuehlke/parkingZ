@@ -8,7 +8,7 @@ import { createEpicMiddleware, combineEpics } from "redux-observable";
 
 import { rootReducer } from './reducers';
 import { rootEpic } from "./epics";
-import { Expenses } from "./components/Expenses";
+import { Buildings } from "./components/Buildings";
 import { App } from "./components/App";
 
 
@@ -33,7 +33,7 @@ ReactDOM.render(
     <Provider store={store}>
         <Router history={hashHistory}>
             <Route path="/" component={App}>
-                <Route path="/expenses" component={Expenses} />
+                <Route path="/buildings" component={Buildings} />
             </Route>
         </Router>
     </Provider>,
