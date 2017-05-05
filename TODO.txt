@@ -1,5 +1,6 @@
 GraphQl:
 - host node server in azure
+- TYPE Poolwagen
 
 React:
 - webpack scss oder anderer css preprozessor (native browser variablen)
