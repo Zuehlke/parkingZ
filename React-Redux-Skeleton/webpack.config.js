@@ -21,7 +21,7 @@ module.exports = {
             { test: /\.css$/, loader: "style-loader!css-loader" },
             // load images inline with the url-loader plugin for webpack (https://survivejs.com/webpack/loading/images/).
             {
-                test: /\.(png|jpg|svg)$/,
+                test: /\.(png|jpg|svg|woff|woff2|eot|ttf)$/,
                 use: {
                     loader: 'url-loader',
                     options: {
