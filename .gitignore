@@ -4,3 +4,4 @@ parking_api/index.js
 parking_api/typings/
 React-Redux-Skeleton/node_modules
 React-Redux-Skeleton/dist/
+package-lock.json

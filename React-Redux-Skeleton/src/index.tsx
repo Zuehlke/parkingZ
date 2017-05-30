@@ -12,6 +12,8 @@ import { Buildings } from "./components/Buildings";
 import { Building } from "./components/Building";
 import { App } from "./components/App";
 
+import 'semantic-ui-css/semantic.min.css';
+
 
 // register redux dev tools extension at redux:
 const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -33,10 +35,7 @@ store.subscribe(() => {
 ReactDOM.render(
     <Provider store={store}>
         <Router history={hashHistory}>
-            <Route path="/" component={App}>
-                <Route path="/buildings" component={Buildings} />
-                <Route path="/building/:buildingId" component={Building} />
-            </Route>
+            <Route path="/" component={App} />
         </Router>
     </Provider>,
     document.getElementById("root")
