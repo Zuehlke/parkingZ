@@ -1,3 +1,5 @@
+import 'semantic-ui-css/semantic.min.css';
+
 import "rxjs";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
@@ -11,8 +13,6 @@ import { rootEpic } from "./epics";
 import { Buildings } from "./components/Buildings";
 import { Building } from "./components/Building";
 import { App } from "./components/App";
-
-import 'semantic-ui-css/semantic.min.css';
 
 
 // register redux dev tools extension at redux:
