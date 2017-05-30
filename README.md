@@ -1,2 +1,2 @@
 # parkingZ
-Applicatio to find Parking Lots
+Application to find Parking Lots
