@@ -3,9 +3,6 @@ var urlsToCache = [
 	'/',
 	'/index.html',
 	'/bundle.js',
-	'/node_modules/bootstrap/dist/css/bootstrap.min.css',
-	'/node_modules/react/dist/react.js',
-	'/node_modules/react-dom/dist/react-dom.js'
 ];
 
 // importScripts('/cache-polyfill.js');
