@@ -1,8 +1,9 @@
 var CACHE_NAME = 'parkinglots';
 var urlsToCache = [
-	'/',
-	'/index.html',
-	'/bundle.js',
+	'index.html',
+	'bundle.js',
+	'assets/homescreen512.png',
+	'assets/zuehlke_logo.jpg'
 ];
 
 // importScripts('/cache-polyfill.js');
