@@ -56,7 +56,7 @@ self.addEventListener('fetch', function (event) {
 });
 
 self.addEventListener('activate', function (event) {
-
+	console.log('activate');
 	var cacheWhitelist = [CACHE_NAME];
 
 	event.waitUntil(
@@ -64,6 +64,7 @@ self.addEventListener('activate', function (event) {
 			return Promise.all(
 				cacheNames.map(function (cacheName) {
 					if (cacheWhitelist.indexOf(cacheName) === -1) {
+						console.log('cache ', cacheName);
 						return caches.delete(cacheName);
 					}
 				})
